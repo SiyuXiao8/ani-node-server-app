@@ -43,12 +43,41 @@ const usersController = (app) => {
         res.sendStatus(200)
     }
 
+    const findUserById = async (req, res) => {
+        const userID = req.params.id
+        const user = await userDao.findUserById(userID)
+        if(!user) {
+            res.sendStatus(404)
+            return
+        }
+        res.json(user)
+    }
+
+    const deleteUser = async (req, res) => {
+        const userID = req.params.id
+        const status = await userDao.deleteUser(userID)
+        res.json(userID)
+    }
+
+    const updateUser = async (req, res) => {
+        const updates = req.body
+        const uid = req.params.id
+        const status = await userDao.updateUser(uid, updates)
+        const updatedUser = await userDao.findUserById(uid)
+        req.session['currentUser'] = updatedUser
+        res.json(updatedUser)
+    }
+
     app.get('/users', findAllUsers)
+    app.get('/users/:id', findUserById)
+    app.delete('/users/:id', deleteUser)
+    app.put('/users/:id', updateUser)
 
     app.post('/register', register)
     app.post('/login', login)
     app.post('/logout', logout)
     app.post('/profile', profile)
+
 }
 
 export default usersController;

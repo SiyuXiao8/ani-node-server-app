@@ -3,6 +3,8 @@ import cors from 'cors';
 import mongoose from "mongoose";
 import session from 'express-session';
 import usersController from "./controllers/users/users-controller.js";
+import reviewsController from "./controllers/reviews/reviews-controller.js";
+import favoriteController from "./controllers/favorite/favorite-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -31,6 +33,7 @@ app.use(session({
 app.use(express.json())
 
 usersController(app)
-// animeController(app)
+reviewsController(app)
+favoriteController(app)
 
 app.listen(4000);
