@@ -25,8 +25,9 @@ mongoose.connect(CONNECTION_STRING)
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:3000','https://euphonious-manatee-4dc64a.netlify.app/']
+    origin: ['http://localhost:3000','https://master--euphonious-manatee-4dc64a.netlify.app/']
 }))
+
 app.use(session({
     secret: 'should be an environment variable',
     resave: false,
