@@ -36,4 +36,4 @@ usersController(app)
 reviewsController(app)
 favoriteController(app)
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
