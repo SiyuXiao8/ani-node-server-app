@@ -16,7 +16,10 @@ const options = {
     family: 4
 }
 
-mongoose.connect('mongodb://localhost:27017/animeApp', options)
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
+    || 'mongodb://localhost:27017/animeApp'
+
+mongoose.connect(CONNECTION_STRING, options)
     .then(r => console.log('connected')); // url from mongodb
 
 const app = express();
