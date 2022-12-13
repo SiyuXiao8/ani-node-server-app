@@ -78,6 +78,9 @@ const usersController = (app) => {
     app.post('/logout', logout)
     app.post('/profile', profile)
 
+    app.get('/', (req,res) => {
+        res.send('Welcome to Anime App!')
+    })
 }
 
 export default usersController;
