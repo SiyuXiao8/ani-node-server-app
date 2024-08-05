@@ -25,7 +25,7 @@ const CONNECTION_STRING =
 
 mongoose
   .connect(CONNECTION_STRING, options)
-  .then((r) => console.log('connected')) // url from mongodb
+  .then((r) => console.log(`connected`)) // url from mongodb
 
 const app = express()
 app.use(
@@ -49,4 +49,4 @@ usersController(app)
 reviewsController(app)
 favoriteController(app)
 
-app.listen(process.env.PORT || 4000)
+app.listen(4000)
