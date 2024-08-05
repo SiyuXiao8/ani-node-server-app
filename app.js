@@ -22,10 +22,10 @@ const CONNECTION_STRING =
 
 // const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
 //     || 'mongodb://localhost:27017/animeApp'
-
+mongoose.set('strictQuery', true)
 mongoose
   .connect(CONNECTION_STRING, options)
-  .then((r) => console.log(`connected`)) // url from mongodb
+  .then((r) => console.log(`connected mongoose`)) // url from mongodb
 
 const app = express()
 app.use(
