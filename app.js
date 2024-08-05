@@ -48,5 +48,9 @@ app.use(express.json())
 usersController(app)
 reviewsController(app)
 favoriteController(app)
-
-app.listen(4000)
+const PORT = 4000
+// app.listen(4000)
+app.listen(PORT, function (err) {
+  if (err) console.log('Error in server setup')
+  console.log('Server listening on Port', PORT)
+})
